@@ -1,0 +1,17 @@
+{
+  "name": "SDC_TeamOregano_ProductsAPI",
+  "version": "1.0.0",
+  "description": "An API created for Hack Reactor's Project Atelier",
+  "author": "Lauren Anderson",
+  "license": "None",
+  "engines": {
+    "node": ">=6.13.0"
+  },
+  "scripts": {
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+  }
+}
