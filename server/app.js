@@ -1,49 +1,67 @@
 const express = require('express');
-const axios = require('axios');
+
+require('dotenv').config();
+
+const db = require('../database/index');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
-const db = require('../database/index.js');
-
-// test
-app.get('/', (req, res) => {
-  var product_id = req.query.product_id;
-  const retreive = async (product_id) => {
-    try {
-      const data = await db.getProducts(product_id);
-      console.log(data, 'data');
-      res.status(200).send(data);
-    }
-    catch(err) {
-      console.error(err);
-      res.status(404).send(err);
-    }
-  }
-  retreive(product_id);
-  // db.getProducts(product_id)
-  //   .then((data) => res.status(201).send(data))
-  //   .catch((err) => res.status(404).send(err));
-});
+// gzip compression
+// const compression = require('compression');
+// app.use(compression());
 
 // products list
 app.get('/products', (req, res) => {
-
+  const retrieve = async (page = 1, count = 5) => {
+    try {
+      const data = await db.getProducts(page, count);
+      res.status(200).send(data);
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  };
+  retrieve(req.query.page, req.query.count);
 });
 
-// product styles
+// !!product styles
 app.get('/products/:product_id/styles', (req, res) => {
-
+  const retrieve = async (productId) => {
+    try {
+      const data = await db.getStyles(productId);
+      res.status(200).send(data);
+    } catch (err) {
+      res.status(404).send(err);
+    }
+  };
+  retrieve(req.query.product_id);
+  res.end();
 });
 
 // product info
 app.get('/products/:product_id', (req, res) => {
-
+  const retrieve = async (productId) => {
+    try {
+      const data = await db.getFeatures(productId);
+      res.status(200).send(data);
+    } catch (err) {
+      res.status(404).send(err);
+    }
+  };
+  retrieve(req.query.product_id);
 });
 
 // related products
 app.get('/products/:product_id/related', (req, res) => {
-
+  const retrieve = async (productId) => {
+    try {
+      const data = await db.getRelatedPs(productId);
+      res.status(200).send(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  retrieve(req.query.product_id);
 });
 
 app.listen(port, () => {

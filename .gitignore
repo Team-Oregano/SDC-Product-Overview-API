@@ -3,3 +3,5 @@ node_modules
 .coverage
 neo4jCommands.txt
 sdc-sql-schema.sql
+.trinitity.json
+.env
