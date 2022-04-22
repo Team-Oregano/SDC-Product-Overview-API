@@ -1,17 +1,29 @@
 {
-  "name": "SDC_TeamOregano_ProductsAPI",
+  "name": "sdc-products-api",
   "version": "1.0.0",
   "description": "An API created for Hack Reactor's Project Atelier",
+  "main": "index.js",
   "author": "Lauren Anderson",
-  "license": "None",
+  "license": "none",
   "engines": {
     "node": ">=6.13.0"
   },
   "scripts": {
+    "server-dev": "NODE_OPTIONS=--openssl-legacy-provider npx nodemon server/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Team-Oregano/SDC-Product-Overview-API.git"
   },
   "dependencies": {
+    "axios": "^0.26.1",
+    "express": "^4.17.3",
+    "neo4j-driver": "^4.4.5",
+    "node": "^17.7.2",
+    "nodemon": "^2.0.15"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "jest": "^27.5.1"
   }
 }

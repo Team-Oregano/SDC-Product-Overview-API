@@ -1,0 +1,5 @@
+node_modules
+.DS_Store
+.coverage
+neo4jCommands.txt
+sdc-sql-schema.sql
