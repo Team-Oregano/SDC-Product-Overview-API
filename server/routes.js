@@ -1,11 +1,13 @@
-const router = require('express').Router();
+const router = require('express').Router()
 
-const controller = require('./controllers');
+const controller = require('./controllers')
 
-router.get('/products', controller.products.get);
+router.get('/', controller.products.get)
 
-router.get('/products/:product_id/styles', controller.styles.get);
+router.get('/:product_id/styles', controller.styles.get)
 
-router.get('/products/:product_id', controller.products.get);
+router.get('/:product_id', controller.features.get)
 
-router.get('/products/:product_id/related', controller.get.related);
+router.get('/:product_id/related', controller.related.get)
+
+module.exports = router
