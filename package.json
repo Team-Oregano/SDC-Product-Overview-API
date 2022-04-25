@@ -10,7 +10,7 @@
   },
   "scripts": {
     "server-dev": "NODE_OPTIONS=--openssl-legacy-provider npx nodemon server/app.js",
-    "test": "jest"
+    "test": "jest --w"
   },
   "repository": {
     "type": "git",
@@ -18,21 +18,32 @@
   },
   "dependencies": {
     "axios": "^0.26.1",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "morgan": "^1.10.0",
     "neo4j-driver": "^4.4.5",
     "node": "^17.7.2",
     "nodemon": "^2.0.15"
   },
   "devDependencies": {
+    "ava": "^4.2.0",
     "eslint": "^8.13.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "eslint-plugin-import": "^2.26.0",
     "jest": "^27.5.1",
+    "neo-forgery": "^2.0.0",
     "standard": "^17.0.0"
   },
   "jest": {
     "testRegex": "((\\.|/*.)(spec))\\.js?$",
+    "verbose": true
+  },
+  "ava": {
+    "files": [
+      "./server/spec/**"
+    ],
     "verbose": true
   }
 }
